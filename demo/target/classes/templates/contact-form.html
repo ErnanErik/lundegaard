@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<style>
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+</style>
+<body>
+<h1>Contact us</h1>
+<form action="#" th:action="@{/}" th:object="${formRequest}" method="post">
+    <select th:field="*{contactFormType}">
+        <option th:each="i : ${types}" th:value="${i.getTypeName()}" th:text="${i.getTypeName()}"></option>
+    </select>
+    <p th:if="${#fields.hasErrors('contactFormType')}" th:errors="*{contactFormType}"></p>
+
+    <p>Policy Number: <input type="text" th:field="*{policyNumber}"/></p>
+    <p th:if="${#fields.hasErrors('policyNumber')}" th:errors="*{policyNumber}">Only numbers</p>
+
+    <p>Name: <input type="text" th:field="*{name}"/></p>
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Only letters</p>
+
+    <p>Surname: <input type="text" th:field="*{surname}"/></p>
+    <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}">Only letters</p>
+
+    <p>Your request: <input type="text" th:field="*{requestField}"/></p>
+    <p th:if="${#fields.hasErrors('requestField')}" th:errors="*{requestField}">Max 5000</p>
+    <p><input type="submit" value="Submit"/></p>
+</form>
+</body>
+</html>
