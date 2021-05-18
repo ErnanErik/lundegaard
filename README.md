@@ -1,7 +1,7 @@
 README
 
 Program:
-- mozno spustit v IDE(ja som vyuzival IntelliJ Idea Ultimate edition). Spustit: Run - Run 'DemoApplication'
+- mozno spustit cez konzolu: mvn spring-boot:run
 - bezi na default adrese http://localhost:8080/
 - pouziva H2 databazu, ktora sa naplni pri starte aplikacie zakladnymi potrebnymi datami
 
@@ -13,4 +13,4 @@ FE:
 
 BE
 - program je spring boot aplikacia, vyuziva Hibernate, spring boot validation, spring boot web, 
-
+- nez sa spustia testy, je potrebne vybuildit mvn package
